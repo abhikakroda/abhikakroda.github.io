@@ -1,1 +1,110 @@
-heelo world
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Site Maintenance</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#60a5fa;
+      --muted:#94a3b8;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--bg) 0%, #071026 100%);
+      color:#e6eef8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .card{
+      max-width:720px;
+      width:100%;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      padding:36px;
+      display:flex;
+      gap:20px;
+      align-items:center;
+    }
+
+    .icon{
+      flex:0 0 96px;
+      height:96px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(96,165,250,0.06));
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float{
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    h1{
+      margin:0 0 6px 0;
+      font-size:1.6rem;
+      letter-spacing: -0.02em;
+    }
+    p{ margin:0; color:var(--muted); line-height:1.5; }
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      background:transparent;
+      border:1px solid rgba(96,165,250,0.18);
+      color:var(--accent);
+      padding:8px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.95rem;
+    }
+    .small{ font-size:0.85rem; color:var(--muted); }
+
+    /* mobile tweak */
+    @media (max-width:520px){
+      .card{ flex-direction:column; text-align:center; padding:24px; }
+      .icon{ margin-bottom:6px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="maintitle">
+    <div class="icon" aria-hidden="true">
+      <!-- simple maintenance wrench icon (inline SVG) -->
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)">
+        <path d="M14.7 7.3L9 13l-4 1 1-4 5.7-5.7"/>
+        <path d="M20.4 3.6a1 1 0 0 0-1.4 0l-1.8 1.8 3.2 3.2 1.8-1.8a1 1 0 0 0 0-1.4l-2.8-2.8z"/>
+      </svg>
+    </div>
+
+    <div>
+      <h1 id="maintitle">We'll be back soon — Site under maintenance</h1>
+      <p>
+        We're doing some improvements to make the site better for you. Thanks for your patience — we'll be back online shortly.
+      </p>
+
+      <div class="actions">
+        <a class="btn" href="/" aria-label="Go to homepage">Go to homepage</a>
+        <a class="btn" href="mailto:admin@example.com" aria-label="Contact support">Contact support</a>
+        <span class="small" role="status" aria-live="polite">Estimated downtime: ~30–60 minutes</span>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+
