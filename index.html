@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Site Maintenance</title>
+  <title>e-commerce mansoors sales - Coming Soon</title>
   <style>
     :root{
       --bg:#0f1724;
@@ -72,39 +72,50 @@
       text-decoration:none;
       font-weight:600;
       font-size:0.95rem;
+      cursor: pointer;
     }
     .small{ font-size:0.85rem; color:var(--muted); }
+
+    .form-input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        width: 250px;
+    }
 
     /* mobile tweak */
     @media (max-width:520px){
       .card{ flex-direction:column; text-align:center; padding:24px; }
       .icon{ margin-bottom:6px; }
+      .form-input { width: 100%; }
     }
   </style>
 </head>
 <body>
   <main class="card" role="main" aria-labelledby="maintitle">
     <div class="icon" aria-hidden="true">
-      <!-- simple maintenance wrench icon (inline SVG) -->
+      <!-- simple shopping cart icon (inline SVG) -->
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)">
-        <path d="M14.7 7.3L9 13l-4 1 1-4 5.7-5.7"/>
-        <path d="M20.4 3.6a1 1 0 0 0-1.4 0l-1.8 1.8 3.2 3.2 1.8-1.8a1 1 0 0 0 0-1.4l-2.8-2.8z"/>
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
       </svg>
     </div>
 
     <div>
-      <h1 id="maintitle">We'll be back soon — Site under maintenance</h1>
+      <h1 id="maintitle">e-commerce mansoors sales is coming soon!</h1>
       <p>
-        We're doing some improvements to make the site better for you. Thanks for your patience — we'll be back online shortly.
+        We're putting the finishing touches on our new e-commerce platform. Be the first to know when we launch.
       </p>
 
-      <div class="actions">
-        <a class="btn" href="/" aria-label="Go to homepage">Go to homepage</a>
-        <a class="btn" href="mailto:admin@example.com" aria-label="Contact support">Contact support</a>
-        <span class="small" role="status" aria-live="polite">Estimated downtime: ~30–60 minutes</span>
-      </div>
+      <form class="actions" onsubmit="return false;">
+        <input type="email" class="form-input" placeholder="Enter your email" aria-label="Email address" required>
+        <button type="submit" class="btn">Join Waitlist</button>
+      </form>
     </div>
   </main>
 </body>
 </html>
-
