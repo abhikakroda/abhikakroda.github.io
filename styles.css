@@ -9,6 +9,11 @@ html {
     scroll-behavior: smooth;
 }
 
+/* CSS Variables for mobile viewport */
+:root {
+    --vh: 1vh;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -109,6 +114,7 @@ body {
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
@@ -881,6 +887,11 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Navigation */
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -893,6 +904,7 @@ body {
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
         padding: 2rem 0;
         border-bottom: 1px solid #e5e7eb;
+        gap: 1rem;
     }
 
     .nav-menu.active {
@@ -915,62 +927,105 @@ body {
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    .join-btn {
+        margin-top: 1rem;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
     }
 
     .hero-title {
         font-size: 2.5rem;
         font-weight: 800;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-buttons {
         justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
     .hero-stats {
         justify-content: center;
-        gap: 1rem;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
     }
 
     .stat-number {
         font-size: 1.5rem;
     }
 
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
     .hero-card {
-        max-width: 300px;
+        max-width: 100%;
         margin: 0 auto;
+        padding: 1.5rem;
     }
 
     .floating-elements {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
     }
 
     .element {
-        font-size: 2rem;
+        font-size: 1.5rem;
+    }
+
+    /* Section Headers */
+    .section-header {
+        margin-bottom: 2rem;
     }
 
     .section-header h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 800;
     }
 
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    /* Cards Grid */
     .resources-grid,
     .events-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .join-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+    .resource-card,
+    .event-card {
+        padding: 1.5rem;
     }
 
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-
+    /* Event Cards */
     .event-card {
         flex-direction: column;
     }
@@ -978,38 +1033,421 @@ body {
     .event-date {
         min-width: auto;
         padding: 1rem;
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .event-date .day {
+        font-size: 1.5rem;
+    }
+
+    .event-features {
+        justify-content: center;
+    }
+
+    /* Join Section */
+    .join-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .join-text h2 {
+        font-size: 2rem;
+    }
+
+    .join-text p {
+        font-size: 1rem;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-info {
+        gap: 1.5rem;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .social-icons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
     }
 
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+        gap: 1rem;
     }
 
     .footer-links {
         justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 15px;
+        padding: 0 10px;
+    }
+
+    /* Navigation */
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+
+    .nav-logo i {
+        font-size: 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 1rem 0;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.1;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .hero-buttons {
+        gap: 0.8rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        max-width: 250px;
+    }
+
+    .hero-stats {
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.3rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    .hero-card {
+        padding: 1rem;
+    }
+
+    .card-header {
+        margin-bottom: 1rem;
+    }
+
+    .card-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .card-content p {
+        font-size: 0.8rem;
+    }
+
+    .floating-elements {
+        width: 120px;
+        height: 120px;
+    }
+
+    .element {
+        font-size: 1.2rem;
+    }
+
+    /* Section Headers */
+    .section-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .section-header p {
+        font-size: 0.9rem;
+    }
+
+    /* Cards */
+    .resource-card,
+    .event-card {
+        padding: 1rem;
+    }
+
+    .resource-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .resource-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .resource-card p {
+        font-size: 0.9rem;
+    }
+
+    .event-date {
+        padding: 0.8rem;
+    }
+
+    .event-date .day {
+        font-size: 1.3rem;
+    }
+
+    .event-date .month {
+        font-size: 0.8rem;
+    }
+
+    .event-details h3 {
+        font-size: 1.1rem;
+    }
+
+    .event-description {
+        font-size: 0.9rem;
+    }
+
+    .feature-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    /* Join Section */
+    .join-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .join-text p {
+        font-size: 0.9rem;
+    }
+
+    .join-benefits li {
+        font-size: 0.9rem;
+    }
+
+    .form-card {
+        padding: 1rem;
+    }
+
+    .form-header h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Contact Section */
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .contact-details h3 {
+        font-size: 1.1rem;
+    }
+
+    .contact-details p {
+        font-size: 0.9rem;
+    }
+
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    .footer-logo {
+        font-size: 1.2rem;
+    }
+
+    .footer-section h4 {
+        font-size: 1rem;
+    }
+
+    .footer-section ul li a {
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: 1rem 0;
+    }
+
+    .hero-container {
+        gap: 1rem;
     }
 
     .hero-title {
         font-size: 2rem;
     }
 
-    .hero-subtitle {
-        font-size: 1.2rem;
+    .hero-stats {
+        margin-top: 1rem;
     }
 
-    .btn {
-        padding: 0.6rem 1.2rem;
+    .floating-elements {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 8px;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-subtitle {
         font-size: 0.9rem;
     }
 
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+        max-width: 200px;
+    }
+
+    .hero-stats {
+        gap: 0.8rem;
+    }
+
+    .stat-number {
+        font-size: 1.1rem;
+    }
+
+    .stat-label {
+        font-size: 0.6rem;
+    }
+
     .section-header h2 {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
+    }
+
+    .resource-card,
+    .event-card {
+        padding: 0.8rem;
+    }
+
+    .social-icons {
+        gap: 0.5rem;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-link {
+        padding: 0.5rem 0;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .social-icon {
+        min-width: 44px;
+        min-height: 44px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .resource-link {
+        padding: 0.5rem 0;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .event-card,
+    .resource-card {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+    .floating-elements {
+        will-change: transform;
+    }
+
+    .element {
+        will-change: transform;
+    }
+
+    .hero::before {
+        background-attachment: scroll;
+    }
+
+    .join::before {
+        background-attachment: scroll;
+    }
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    input, select, textarea {
+        font-size: 16px;
     }
 }
 
