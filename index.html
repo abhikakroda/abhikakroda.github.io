@@ -1,110 +1,345 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Site Maintenance</title>
-  <style>
-    :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --accent:#60a5fa;
-      --muted:#94a3b8;
-    }
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:linear-gradient(180deg,var(--bg) 0%, #071026 100%);
-      color:#e6eef8;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-    }
-
-    .card{
-      max-width:720px;
-      width:100%;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-      padding:36px;
-      display:flex;
-      gap:20px;
-      align-items:center;
-    }
-
-    .icon{
-      flex:0 0 96px;
-      height:96px;
-      border-radius:12px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(96,165,250,0.06));
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes float{
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
-    }
-
-    h1{
-      margin:0 0 6px 0;
-      font-size:1.6rem;
-      letter-spacing: -0.02em;
-    }
-    p{ margin:0; color:var(--muted); line-height:1.5; }
-    .actions{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .btn{
-      background:transparent;
-      border:1px solid rgba(96,165,250,0.18);
-      color:var(--accent);
-      padding:8px 14px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:600;
-      font-size:0.95rem;
-    }
-    .small{ font-size:0.85rem; color:var(--muted); }
-
-    /* mobile tweak */
-    @media (max-width:520px){
-      .card{ flex-direction:column; text-align:center; padding:24px; }
-      .icon{ margin-bottom:6px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synapse - AI/ML Club</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <main class="card" role="main" aria-labelledby="maintitle">
-    <div class="icon" aria-hidden="true">
-      <!-- simple maintenance wrench icon (inline SVG) -->
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)">
-        <path d="M14.7 7.3L9 13l-4 1 1-4 5.7-5.7"/>
-        <path d="M20.4 3.6a1 1 0 0 0-1.4 0l-1.8 1.8 3.2 3.2 1.8-1.8a1 1 0 0 0 0-1.4l-2.8-2.8z"/>
-      </svg>
-    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>Synapse</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#join" class="nav-link join-btn">Join Us</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-    <div>
-      <h1 id="maintitle">We'll be back soon — Site under maintenance</h1>
-      <p>
-        We're doing some improvements to make the site better for you. Thanks for your patience — we'll be back online shortly.
-      </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🚀 AI/ML Community</span>
+                </div>
+                <h1 class="hero-title">Download<br>AI/ML Resources</h1>
+                <p class="hero-subtitle">
+                    Get what's next, now. Access cutting-edge AI/ML tools, tutorials, and connect with a community of innovators.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#join" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Join Synapse
+                    </a>
+                    <a href="#resources" class="btn btn-secondary">
+                        <i class="fas fa-play"></i>
+                        Explore Resources
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Members</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Resources</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="card-title">Latest Release</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>AI/ML Toolkit v2.1</h3>
+                        <p>Enhanced neural networks and improved algorithms</p>
+                        <div class="version-info">
+                            <span class="version">v2.1.0</span>
+                            <span class="date">August 25, 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-elements">
+                    <div class="element element-1">🤖</div>
+                    <div class="element element-2">🧠</div>
+                    <div class="element element-3">⚡</div>
+                    <div class="element element-4">🔬</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="actions">
-        <a class="btn" href="/" aria-label="Go to homepage">Go to homepage</a>
-        <a class="btn" href="mailto:admin@example.com" aria-label="Contact support">Contact support</a>
-        <span class="small" role="status" aria-live="polite">Estimated downtime: ~30–60 minutes</span>
-      </div>
-    </div>
-  </main>
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Releases</h2>
+                <p>Stay updated with our newest AI/ML tools and resources</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">25</span>
+                        <span class="month">Aug</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-badge">New</div>
+                        <h3>Neural Network Toolkit</h3>
+                        <p class="event-version"><i class="fas fa-code-branch"></i> v2.1.0</p>
+                        <p class="event-description">Advanced neural network implementation with improved performance and new activation functions.</p>
+                        <div class="event-features">
+                            <span class="feature-tag">Deep Learning</span>
+                            <span class="feature-tag">GPU Support</span>
+                        </div>
+                        <button class="btn btn-small">Download</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">20</span>
+                        <span class="month">Aug</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-badge">Updated</div>
+                        <h3>Data Processing Suite</h3>
+                        <p class="event-version"><i class="fas fa-code-branch"></i> v1.8.2</p>
+                        <p class="event-description">Enhanced data preprocessing tools with support for large-scale datasets and real-time processing.</p>
+                        <div class="event-features">
+                            <span class="feature-tag">Big Data</span>
+                            <span class="feature-tag">Real-time</span>
+                        </div>
+                        <button class="btn btn-small">Download</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">Aug</span>
+                    </div>
+                    <div class="event-details">
+                        <div class="event-badge">Beta</div>
+                        <h3>Computer Vision API</h3>
+                        <p class="event-version"><i class="fas fa-code-branch"></i> v3.0.0-beta</p>
+                        <p class="event-description">Next-generation computer vision library with state-of-the-art object detection and image segmentation.</p>
+                        <div class="event-features">
+                            <span class="feature-tag">Vision AI</span>
+                            <span class="feature-tag">Beta</span>
+                        </div>
+                        <button class="btn btn-small">Try Beta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Download Categories</h2>
+                <p>Choose your platform and start exploring AI/ML tools</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile AI</h3>
+                    <p>AI/ML tools optimized for mobile devices and edge computing.</p>
+                    <div class="resource-version">v2.1.0</div>
+                    <a href="#" class="resource-link">Download →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Desktop Suite</h3>
+                    <p>Comprehensive AI/ML development environment for desktop.</p>
+                    <div class="resource-version">v3.0.2</div>
+                    <a href="#" class="resource-link">Download →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Platform</h3>
+                    <p>Scalable cloud-based AI/ML infrastructure and services.</p>
+                    <div class="resource-version">v1.9.5</div>
+                    <a href="#" class="resource-link">Deploy →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Hardware SDK</h3>
+                    <p>AI/ML libraries optimized for specialized hardware.</p>
+                    <div class="resource-version">v2.0.1</div>
+                    <a href="#" class="resource-link">Download →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="join">
+        <div class="container">
+            <div class="join-content">
+                <div class="join-text">
+                    <div class="join-badge">Join the Community 👋</div>
+                    <h2>Join the Synapse Community</h2>
+                    <p>Connect with other AI/ML enthusiasts, ask questions, share feedback, and stay updated with the latest developments.</p>
+                    <ul class="join-benefits">
+                        <li><i class="fas fa-check"></i> Early access to beta releases</li>
+                        <li><i class="fas fa-check"></i> Direct support from developers</li>
+                        <li><i class="fas fa-check"></i> Exclusive tutorials and guides</li>
+                        <li><i class="fas fa-check"></i> Community forum access</li>
+                    </ul>
+                </div>
+                <div class="join-form">
+                    <div class="form-card">
+                        <div class="form-header">
+                            <i class="fas fa-users"></i>
+                            <h3>Get Started</h3>
+                        </div>
+                        <a href="https://forms.google.com/your-form-link" class="btn btn-primary btn-large" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Download Profile
+                        </a>
+                        <p class="form-note">* Get automatic updates and access to beta features</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Community & Support</h2>
+                <p>Connect with us and get the help you need</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Have Questions?</h3>
+                            <p>Ask the Community</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Report Issues</h3>
+                            <p>Submit bug reports and feature requests</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Documentation</h3>
+                            <p>Comprehensive guides and tutorials</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" title="X/Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon" title="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="social-note">Join our community for updates and discussions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-brain"></i>
+                        <span>Synapse</span>
+                    </div>
+                    <p>A free platform to download AI/ML tools, resources, and connect with the community.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#events">Latest Releases</a></li>
+                        <li><a href="#resources">Download Categories</a></li>
+                        <li><a href="#join">Join Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 — Synapse. This platform is not affiliated with any university.</p>
+                <div class="footer-links">
+                    <a href="#">Legal Info</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
