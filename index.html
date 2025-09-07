@@ -2,75 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Password Check</title>
+  <title>Time Machine 69</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      margin: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
     }
-    .box {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    .card {
+      background: rgba(20, 20, 20, 0.9);
+      border: 1px solid rgba(0, 255, 128, 0.3);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 255, 128, 0.3);
       text-align: center;
+      width: 400px;
+    }
+    h1 {
+      margin-bottom: 20px;
     }
     input {
       padding: 10px;
-      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      outline: none;
       width: 200px;
+      margin-right: 10px;
+      background: #222;
+      color: white;
+      text-align: center;
     }
     button {
       padding: 10px 20px;
-      background: #007BFF;
-      color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
+      background: #00d084;
+      color: black;
       cursor: pointer;
+      font-weight: bold;
     }
-    button:hover {
-      background: #0056b3;
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
-    .message {
-      margin-top: 10px;
+    #status {
+      margin-top: 20px;
+      font-size: 16px;
+      min-height: 24px;
+    }
+    .danger {
+      color: red;
       font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="box" id="passwordBox">
-    <h2>Enter Password</h2>
-    <input type="password" id="password" placeholder="Enter password">
-    <br>
-    <button onclick="checkPassword()">Submit</button>
-    <div class="message" id="message"></div>
-  </div>
-
-  <div class="box" id="successBox" style="display: none;">
-    <h2>✅ You successfully done it!</h2>
+  <div class="card">
+    <h1>Time Machine 69</h1>
+    <div>
+      <input type="number" id="year" value="2050">
+      <button id="travelBtn">Travel</button>
+    </div>
+    <div id="status"></div>
   </div>
 
   <script>
-    function checkPassword() {
-      const entered = document.getElementById("password").value;
-      const correctPassword = "1435"; // fixed password
-      const msg = document.getElementById("message");
-      const passwordBox = document.getElementById("passwordBox");
-      const successBox = document.getElementById("successBox");
+    const phases = [
+      { text: "Building Wormhole..." },
+      { text: "Calling Aliens..." },
+      { text: "Missed Call Received from Narendra Modi..." },
+      { text: "Bsdk 2026 me toh duniya khatam hai 💀", danger: true }
+    ];
 
-      if (entered === correctPassword) {
-        // Hide the password box and show success
-        passwordBox.style.display = "none";
-        successBox.style.display = "block";
-      } else {
-        msg.innerText = "Wrong ❌";
-        msg.style.color = "red";
+    const travelBtn = document.getElementById("travelBtn");
+    const status = document.getElementById("status");
+
+    travelBtn.addEventListener("click", async () => {
+      travelBtn.disabled = true;
+      for (let step of phases) {
+        status.textContent = step.text;
+        status.className = step.danger ? "danger" : "";
+        await new Promise(r => setTimeout(r, step.danger ? 1500 : 1000));
       }
-    }
+      travelBtn.disabled = false;
+    });
   </script>
 </body>
 </html>
