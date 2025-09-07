@@ -1,71 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Time Machine 69</title>
   <style>
+    :root {
+      --bg: #000;
+      --card: rgba(20, 20, 20, 0.9);
+      --accent: #00d084;
+      --accent-glow: rgba(0, 255, 128, 0.35);
+      --text: #fff;
+      --muted: #b8b8b8;
+      --danger: #ff4d4f;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: black;
-      color: white;
-      font-family: Arial, sans-serif;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
+
+    .wrap { width: min(560px, 94vw); padding: clamp(16px, 3vw, 24px); }
+
     .card {
-      background: rgba(20, 20, 20, 0.9);
-      border: 1px solid rgba(0, 255, 128, 0.3);
-      padding: 40px;
+      background: var(--card);
+      border: 1px solid var(--accent-glow);
+      padding: clamp(20px, 4vw, 36px);
       border-radius: 20px;
-      box-shadow: 0 0 40px rgba(0, 255, 128, 0.3);
+      box-shadow: 0 0 40px var(--accent-glow), inset 0 0 0 1px rgba(255,255,255,0.02);
       text-align: center;
-      width: 400px;
     }
-    h1 { margin-bottom: 20px; }
-    input {
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(22px, 4.8vw, 32px);
+      letter-spacing: 0.3px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    input[type="number"] {
+      appearance: textfield;
+      -moz-appearance: textfield;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
       outline: none;
-      width: 200px;
-      margin-right: 10px;
-      background: #222;
-      color: white;
+      width: 100%;
+      background: #161616;
+      color: var(--text);
       text-align: center;
+      font-size: clamp(16px, 4.2vw, 18px);
     }
+    /* remove spinners on WebKit */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
     button {
-      padding: 10px 20px;
+      padding: 12px 18px;
       border: none;
-      border-radius: 8px;
-      background: #00d084;
-      color: black;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #000;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 700;
+      font-size: clamp(14px, 3.8vw, 16px);
+      transition: transform .08s ease, filter .2s ease, opacity .2s ease;
+      min-width: 112px;
     }
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+    button:active { transform: translateY(1px); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(0.2); }
+
     #status {
-      margin-top: 20px;
-      font-size: 16px;
+      margin-top: 16px;
+      font-size: clamp(14px, 3.8vw, 16px);
       min-height: 24px;
     }
-    .danger { color: red; font-weight: bold; }
+    .muted { color: var(--muted); }
+    .danger { color: var(--danger); font-weight: 800; }
+
+    @media (max-width: 520px) {
+      .row { grid-template-columns: 1fr; }
+      button { width: 100%; }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Time Machine 69</h1>
-    <div>
-      <!-- Limit to 4 digits -->
-      <input type="number" id="year" placeholder="Enter year"
-             oninput="if(this.value.length>4)this.value=this.value.slice(0,4);">
-      <button id="travelBtn">Travel</button>
+  <div class="wrap">
+    <div class="card" role="region" aria-labelledby="title">
+      <h1 id="title">Time Machine 69</h1>
+      <div class="row">
+        <!-- Browser-level guard: allow only 2027 and beyond -->
+        <input
+          type="number"
+          id="year"
+          placeholder="Enter year"
+          inputmode="numeric"
+          min="2027"
+          step="1"
+          aria-label="Target year (must be greater than 2026)"
+          oninput="if(this.value.length>4)this.value=this.value.slice(0,4);"
+        />
+        <button id="travelBtn">Travel</button>
+      </div>
+      <div id="status" class="muted" aria-live="polite"></div>
     </div>
-    <div id="status"></div>
   </div>
 
   <audio id="doomSound" src="doom.mp3"></audio>
@@ -75,27 +126,54 @@
       { text: "Building Wormhole..." },
       { text: "Calling Aliens..." },
       { text: "Missed Call Received from Narendra Modi..." },
-      { text: " bsdk 2026 me toh duniya khatam hai 💀", danger: true, sound: true }
+      { text: "Connecting to server..." },
+      { text: "Taking permission from God..." },
+      { text: "2026 me duniya khatm hai 💀", danger: true, sound: true }
     ];
 
     const travelBtn = document.getElementById("travelBtn");
     const status = document.getElementById("status");
     const doomSound = document.getElementById("doomSound");
+    const yearInput = document.getElementById("year");
+
+    function showMessage(msg, cls = "") {
+      status.textContent = msg;
+      status.className = cls || "";
+    }
 
     travelBtn.addEventListener("click", async () => {
-      const yearInput = document.getElementById("year").value;
-      if (yearInput.length !== 4) {
+      const raw = (yearInput.value || "").trim();
+
+      if (raw.length !== 4) {
         alert("Please enter a 4-digit year!");
         return;
       }
-      travelBtn.disabled = true;
-      for (let step of phases) {
-        status.textContent = step.text;
-        status.className = step.danger ? "danger" : "";
-        if (step.sound) doomSound.play();
-        await new Promise(r => setTimeout(r, step.danger ? 2000 : 1000));
+
+      const yearNum = Number(raw);
+
+      if (!Number.isFinite(yearNum) || yearNum <= 2026) {
+        showMessage("Time travel to the past is not possible.", "danger");
+        return;
       }
+
+      travelBtn.disabled = true;
+      yearInput.disabled = true;
+
+      for (let i = 0; i < phases.length; i++) {
+        const step = phases[i];
+        showMessage(step.text, step.danger ? "danger" : "");
+        if (step.sound) {
+          try { doomSound.currentTime = 0; doomSound.play(); } catch (e) {}
+        }
+        await new Promise((r) => setTimeout(r, step.danger ? 1800 : 900));
+      }
+
       travelBtn.disabled = false;
+      yearInput.disabled = false;
+    });
+
+    yearInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") travelBtn.click();
     });
   </script>
 </body>
