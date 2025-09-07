@@ -38,12 +38,11 @@
     .message {
       margin-top: 10px;
       font-weight: bold;
-      color: red;
     }
   </style>
 </head>
 <body>
-  <div class="box">
+  <div class="box" id="passwordBox">
     <h2>Enter Password</h2>
     <input type="password" id="password" placeholder="Enter password">
     <br>
@@ -51,10 +50,26 @@
     <div class="message" id="message"></div>
   </div>
 
+  <div class="box" id="successBox" style="display: none;">
+    <h2>✅ You successfully done it!</h2>
+  </div>
+
   <script>
     function checkPassword() {
-      // No matter what user enters, always show "Wrong"
-      document.getElementById("message").innerText = "Wrong";
+      const entered = document.getElementById("password").value;
+      const correctPassword = "1435"; // fixed password
+      const msg = document.getElementById("message");
+      const passwordBox = document.getElementById("passwordBox");
+      const successBox = document.getElementById("successBox");
+
+      if (entered === correctPassword) {
+        // Hide the password box and show success
+        passwordBox.style.display = "none";
+        successBox.style.display = "block";
+      } else {
+        msg.innerText = "Wrong ❌";
+        msg.style.color = "red";
+      }
     }
   </script>
 </body>
