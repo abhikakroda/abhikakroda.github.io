@@ -23,9 +23,7 @@
       text-align: center;
       width: 400px;
     }
-    h1 {
-      margin-bottom: 20px;
-    }
+    h1 { margin-bottom: 20px; }
     input {
       padding: 10px;
       border-radius: 8px;
@@ -55,39 +53,47 @@
       font-size: 16px;
       min-height: 24px;
     }
-    .danger {
-      color: red;
-      font-weight: bold;
-    }
+    .danger { color: red; font-weight: bold; }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>Time Machine 69</h1>
     <div>
-      <input type="number" id="year" value="2050">
+      <!-- Limit to 4 digits -->
+      <input type="number" id="year" placeholder="Enter year"
+             oninput="if(this.value.length>4)this.value=this.value.slice(0,4);">
       <button id="travelBtn">Travel</button>
     </div>
     <div id="status"></div>
   </div>
+
+  <audio id="doomSound" src="doom.mp3"></audio>
 
   <script>
     const phases = [
       { text: "Building Wormhole..." },
       { text: "Calling Aliens..." },
       { text: "Missed Call Received from Narendra Modi..." },
-      { text: "Bsdk 2026 me toh duniya khatam hai 💀", danger: true }
+      { text: "2026 me toh duniya khatam hai 💀", danger: true, sound: true }
     ];
 
     const travelBtn = document.getElementById("travelBtn");
     const status = document.getElementById("status");
+    const doomSound = document.getElementById("doomSound");
 
     travelBtn.addEventListener("click", async () => {
+      const yearInput = document.getElementById("year").value;
+      if (yearInput.length !== 4) {
+        alert("Please enter a 4-digit year!");
+        return;
+      }
       travelBtn.disabled = true;
       for (let step of phases) {
         status.textContent = step.text;
         status.className = step.danger ? "danger" : "";
-        await new Promise(r => setTimeout(r, step.danger ? 1500 : 1000));
+        if (step.sound) doomSound.play();
+        await new Promise(r => setTimeout(r, step.danger ? 2000 : 1000));
       }
       travelBtn.disabled = false;
     });
